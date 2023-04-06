@@ -1,0 +1,118 @@
+<div class="detailspage-container px-0 2xl:px-16">
+  <app-navbar></app-navbar>
+  <div class="px-4">
+    <div
+      class="detailspage-bg relative h-52 md:h-64 lg:h-80 xl:h-[470px] w-full image-with-gradient2 hidden sm:block"
+    >
+      <img
+        [src]="'https://image.tmdb.org/t/p/w500' + tv.backdrop_path"
+        class="object-cover w-full h-full rounded-lg"
+        alt=""
+      />
+    </div>
+    <div
+      class="detailspage-content relative text-white mt-[0px] sm:mt-[-60px] md:mt-[-186px] z-10 text-white px-0 lg:px-16"
+    >
+      <div>
+        <div class="flex flex-col xl:flex-row mb-6">
+          <div class="grid grid-cols-12">
+            <div class="col-span-12 lg:col-span-3">
+              <div
+                class="flex items-center justify-center lg:block object-cover rounded-lg mb-6"
+              >
+                <div>
+                  <img
+                    [src]="'https://image.tmdb.org/t/p/w500' + tv.poster_path"
+                    class="object-cover w-36 h-[220px] sm:w-[142px] md:w-[160px] md:h-[246px] lg:w-[80%] lg:h-full xl:w-[70%] xl:h-full rounded-lg"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="col-span-12 lg:col-span-9 detailspage-info">
+              <div
+                class="detailspage-title text-center lg:text-left text-2xl md:text-4xl font-semibold mb-6"
+              >
+                {{ tv.name }}
+              </div>
+
+              <div
+                class="detailspage-story text-center lg:text-left text-sm sm:text-sm md:text-sm lg:text-sm xl:text-base mb-6"
+              >
+                {{ tv.overview }}
+              </div>
+
+              <div
+                class="flex justify-center lg:justify-start mb-6 text-md md:text-base"
+              >
+                <div *ngFor="let genre of tv.genres">
+                  <div
+                    class="py-2 px-3 rounded-lg border border-slate-500 mr-4"
+                  >
+                    {{ genre }}
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="detailspage-options flex justify-center lg:justify-start"
+              >
+                <div
+                  class="flex items-center py-2 px-6 bg-slate-500 rounded-lg mr-4 hover:bg-slate-700 cursor-pointer"
+                  *ngIf="trailerKey"
+                >
+                  <a
+                    [href]="'https://www.youtube.com/watch?v=' + trailerKey"
+                    target="_blank"
+                    class="flex"
+                  >
+                    <div class="mr-3">
+                      <i class="bx bx-play font-bold text-xl"></i>
+                    </div>
+                    <div>Trailer</div>
+                  </a>
+                </div>
+                <div
+                  class="border border-red-700 flex items-center rounded-lg mr-4 py-2 px-4 text-red-500 hover:bg-red-500 hover:text-white cursor-pointer"
+                >
+                  <i class="bx bxs-heart font-bold text-xl"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pb-6">
+          <div class="text-2xl font-semibold mb-4">Main caracters</div>
+          <div
+            class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 text-white"
+          >
+            <div
+              *ngFor="let actor of cast"
+              class="flex mb-3 p-2 rounded-lg bg-slate-500 cursor-pointer"
+              [routerLink]="['/actor/', actor.id]"
+            >
+              <div class="mr-3">
+                <div class="rounded-md w-14 h-[70px]">
+                  <img
+                    [src]="
+                      actor.profile_path
+                        ? 'https://image.tmdb.org/t/p/w185/' +
+                          actor.profile_path
+                        : 'https://www.ccair.org/wp-content/uploads/2015/04/wallpaper-for-facebook-profile-photo-e1440624505574.jpg'
+                    "
+                    alt="{{ actor.name }}"
+                    class="object-cover rounded-md w-full h-full"
+                  />
+                </div>
+              </div>
+              <div class="mb-3-name mb-1">
+                <div class="text-white font-medium">{{ actor.name }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

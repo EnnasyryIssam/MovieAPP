@@ -1,0 +1,27 @@
+.recently-added-container {
+  position: relative;
+  background: rgb(76, 0, 143);
+  background: linear-gradient(
+    0deg,
+    rgba(76, 0, 143, 0.7) 0%,
+    rgba(158, 0, 200, 0.7) 52%,
+    rgba(203, 0, 198, 0.7) 100%
+  );
+  backdrop-filter: blur(10px);
+}
+.recently-added-one {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  z-index: 3;
+}
+.recently-added-others {
+  width: 100%;
+  display: flex;
+}
+.recently-added-title-content {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

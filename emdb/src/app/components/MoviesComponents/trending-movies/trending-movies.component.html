@@ -1,0 +1,51 @@
+<div class="popular-movies-container mb-6">
+  <div
+    class="text-white text-xl md:text-2xl font-semibold mb-4 flex items-center"
+  >
+    <div>
+      <img src="/assets/icons/hashtag.svg" alt="" class="w-6 h-6 mr-2" />
+    </div>
+    <div>Trending This Week</div>
+  </div>
+  <div
+    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-4"
+  >
+    <div
+      *ngFor="let movie of movies"
+      class="flex justify-center rounded-lg mb-3"
+    >
+      <div
+        [routerLink]="['/movie', movie.id]"
+        class="popular-movies-content flex justify-center rounded-lg mb-3"
+      >
+        <div class="popular-movies-card rounded-lg cursor-pointer">
+          <div>
+            <div class="popular-movies-img w-full">
+              <img
+                [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+                alt="{{ movie.title }}"
+                alt=""
+                class="w-36 h-[220px] sm:w-[144px] sm:h-[212px] md:w-40 md:h-[236px] lg:w-44 lg:h-[264px] xl:w-[144px] xl:h-[216px] 2xl:w-40 2xl:h-[240px] object-cover rounded-lg"
+              />
+            </div>
+            <div
+              class="w-36 sm:w-[144px] md:w-40 lg:w-44 xl:w-[144px] 2xl:w-40 text-white mt-2 font-semibold"
+            >
+              <div class="title text-sm md:text-md">
+                {{ movie.title }}
+              </div>
+            </div>
+            <div
+              class="popular-movies-rating bottom-section flex items-center text-white mt-1"
+            >
+              <i class="bx bxs-star mr-2 text-xl text-orange-500"></i>
+              <div class="text-gray-300 text-sm">
+                {{ movie.vote_average.toFixed(1) }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

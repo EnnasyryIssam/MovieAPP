@@ -1,0 +1,82 @@
+<div class="text-white toprated-container rounded-lg mb-6">
+  <div>
+    <div
+      class="toprated-title text-xl md:text-2xl font-semibold px-4 py-2 mb-1"
+    >
+      Top Movies
+    </div>
+    <div
+      class="relative h-48 w-full image-with-gradient"
+      [routerLink]="['/movie/', top_rated[0].id]"
+    >
+      <img
+        [src]="'https://image.tmdb.org/t/p/w500' + top_rated[0].backdrop_path"
+        class="object-cover w-full h-full rounded-lg"
+        alt=""
+      />
+      <div class="toprated-one p-4">
+        <div class="flex">
+          <div class="toprated-number flex items-center mr-3">
+            <div
+              class="border-solid border-2 border-white rounded-md py-1 px-3 text-2xl text-black bg-white"
+            >
+              1
+            </div>
+          </div>
+          <div
+            class="toprated-title text-white font-semibold text-base sm:text-xs md:text-sm xl:text-md cursor-pointer"
+          >
+            <div class="toprated-title-content">{{ top_rated[0].title }}</div>
+            <div class="flex items-center">
+              <div class="mr-2 text-gray-300 mt-0.5">
+                <i class="bx bxs-show"></i>
+              </div>
+              <div class="">{{ top_rated[0].vote_count }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid grid-cols-1 sm:grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-1 2xl:grid-cols-1 gap-3"
+    >
+      <div
+        *ngFor="let movie of top_rated.slice(1); let i = index"
+        class="flex px-4 py-2 cursor-pointer"
+        [routerLink]="['/movie', movie.id]"
+      >
+        <div class="toprated-number flex items-center mr-3">
+          <div
+            class="border-solid border-2 border-white rounded-md py-1 px-3 text-2xl text-gray-300"
+          >
+            {{ i + 2 }}
+          </div>
+        </div>
+        <div class="toprated-img flex items-center mr-3">
+          <div
+            class="rounded-md h-[90px] sm:h-[72px] sm:w-[46px] md:h-[90px] md:w-[58px] lg:h-[90px] lg:w-[58px] xl:h-[90px] xl:w-[58px]"
+          >
+            <img
+              [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+              class="object-cover rounded-md h-full w-full"
+              alt=""
+            />
+          </div>
+        </div>
+        <div
+          class="toprated-title text-white font-semibold text-base sm:text-xs md:text-sm xl:text-md"
+        >
+          <div class="toprated-title-content mb-1.5">
+            {{ movie.title }}
+          </div>
+          <div class="flex items-center">
+            <div class="mr-2 text-gray-300 mt-0.5">
+              <i class="bx bxs-show"></i>
+            </div>
+            <div class="">{{ movie.vote_count }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
